@@ -54,4 +54,13 @@ class ProductController extends Controller
         $products->load('reviews');
         return response()->json($products);
     }
+
+    // function search products by name
+    public function search($name): JsonResponse
+    {
+        $products = Product::where('name', 'like', '%' . $name . '%')->get();
+        $products->load('images');
+        $products->load('reviews');
+        return response()->json($products);
+    }
 }

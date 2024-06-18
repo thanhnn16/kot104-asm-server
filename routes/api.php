@@ -20,10 +20,9 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/categories', [ProductController::class, 'categories'])->name('products.categories');
 Route::get('/categories/{id}', [ProductController::class, 'categories_show'])->name('products.categories_show');
 Route::get('/products/category/{category}', [ProductController::class, 'category'])->name('products.category');
-//Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/search/{name}', [ProductController::class, 'search'])->name('products.search');
 
 Route::middleware(['auth:sanctum'])->group(function () {
-
     // Auth
     Route::get('/auth/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
